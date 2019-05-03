@@ -407,6 +407,8 @@ def evaluate(model, embeddings, folder_data, samples_per_class, folder_results, 
         # Test
 
         # Test model
+        model.load_weights('published_results/classifyapp/CLASSIFYAPP-94.83.h5')
+
         print('\n--- Testing model...')
         p = model.predict_gen(generator=gen_test)[0]
 
@@ -466,7 +468,7 @@ def main(argv):
     # Train model
     # Evaluate Classifyapp
     print("\nEvaluating ClassifyappInst2Vec ...")
-    classifyapp_accuracy = evaluate(NCC_classifyapp(), embeddings, folder_data, train_samples, folder_results,
+    classifyapp_accuracy = evaluate(NCC_classifyapp(), embeddings, "task/classifyapp/seq", train_samples, folder_results,
                                     dense_layer_size, print_summary, num_epochs, batch_size)
 
     ####################################################################################################################
